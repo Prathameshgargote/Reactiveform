@@ -87,7 +87,10 @@ export class FormComponent implements OnInit {
 
   OnSubmit() {
     console.log(this.SignUpFrom);
-    console.log(this.SignUpFrom.value);
+    if(this.SignUpFrom.valid){
+      console.log(this.SignUpFrom.value);
+      console.log(this.SignUpFrom.getRawValue());
+    }
   }
 
   isaddhhandler() {
