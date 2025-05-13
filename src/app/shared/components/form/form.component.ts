@@ -33,7 +33,7 @@ export class FormComponent implements OnInit {
     this.pathaAdress();
     this.onAdddependant();
     this.confirmpasshandelr();
-    this.matchpassword()
+    this.matchpassword();
   }
 
   Createform() {
@@ -52,7 +52,7 @@ export class FormComponent implements OnInit {
       ),
       empid: new FormControl(null, [
         Validators.required,
-        Validators.pattern(/^E\d{3}$/),
+        Validators.pattern(CustomRegex.employeeid),
       ]),
       gender: new FormControl(null),
       IsAddsame: new FormControl({ value: null, disabled: true }),
@@ -60,15 +60,15 @@ export class FormComponent implements OnInit {
         country: new FormControl(null, Validators.required),
         state: new FormControl(null, Validators.required),
         city: new FormControl(null, Validators.required),
-        zipcode: new FormControl(null, Validators.required),
+        zipcode: new FormControl(null, [Validators.required,Validators.pattern(CustomRegex.pincode)]),
       }),
       peramanttAdress: new FormGroup({
         country: new FormControl(null, Validators.required),
         state: new FormControl(null, Validators.required),
         city: new FormControl(null, Validators.required),
-        zipcode: new FormControl(null, Validators.required),
+        zipcode: new FormControl(null,[Validators.required,Validators.pattern(CustomRegex.pincode)]),
       }),
-      skills: new FormArray([]),
+      skills: new FormArray([],Validators.required),
       dependant: new FormArray([]),
       password: new FormControl(null, [
         Validators.required,
@@ -96,6 +96,8 @@ export class FormComponent implements OnInit {
         this.f['IsAddsame'].enable();
       } else {
         this.f['IsAddsame'].reset();
+        this.f['IsAddsame'].disable();
+
       }
     });
   }

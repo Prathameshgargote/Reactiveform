@@ -1,318 +1,534 @@
 <div class="form my-4">
-  <form [formGroup]="SignUpFrom" (ngSubmit)="OnSubmit()" >
-  <div class="title text-center">
-    <h1 class="text-info">Reactive Form</h1>
-  </div>
-  <mat-card class="w-100 m-2">
-    <mat-card-header>
-      <mat-card-title> User Detail </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>User Name</mat-label>
-        <input type="text" formControlName="username" matInput />
-        <!-- //required  -->
-        <mat-error
-          *ngIf="f['username'].touched && f['username'].hasError('required')"
-        >
-          UserName Required field !
-        </mat-error>
-        <!-- minlegnth  -->
-        <mat-error
-          *ngIf="f['username'].dirty && f['username'].hasError('minlength')"
-        >
-          UserName should minimum 6 charachotr required !
-        </mat-error>
-        <!-- maxlegth -->
-        <mat-error
-          *ngIf="f['username'].dirty && f['username'].hasError('maxlength')"
-        >
-          UserName Should maximun 12 charactor required !
-        </mat-error>
+  <form [formGroup]="SignUpFrom" (ngSubmit)="OnSubmit()">
+    <div class="title text-center">
+      <h1 class="text-info">Reactive Form</h1>
+    </div>
+    <mat-card class="w-100 m-2">
+      <mat-card-header>
+        <mat-card-title> User Detail </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>User Name</mat-label>
+          <input type="text" formControlName="username" matInput />
+          <!-- //required  -->
+          <mat-error
+            *ngIf="f['username'].touched && f['username'].hasError('required')"
+          >
+            UserName Required field !
+          </mat-error>
+          <!-- minlegnth  -->
+          <mat-error
+            *ngIf="f['username'].dirty && f['username'].hasError('minlength')"
+          >
+            UserName should minimum 6 charachotr required !
+          </mat-error>
+          <!-- maxlegth -->
+          <mat-error
+            *ngIf="f['username'].dirty && f['username'].hasError('maxlength')"
+          >
+            UserName Should maximun 12 charactor required !
+          </mat-error>
 
-        <!-- patter -->
-        <mat-error
-          *ngIf="f['username'].dirty && f['username'].hasError('pattern')"
-        >
-          UserName not allow Number & Special charector!
-        </mat-error>
-        <!-- no space -->
-        <mat-error
-          *ngIf="f['username'].dirty && f['username'].hasError('nospaceErr')"
-        >
-          {{f['username'].errors?.['nospaceErr']}}
-        </mat-error>
-      </mat-form-field>
+          <!-- patter -->
+          <mat-error
+            *ngIf="f['username'].dirty && f['username'].hasError('pattern')"
+          >
+            UserName not allow Number & Special charector!
+          </mat-error>
+          <!-- no space -->
+          <mat-error
+            *ngIf="f['username'].dirty && f['username'].hasError('nospaceErr')"
+          >
+            {{f['username'].errors?.['nospaceErr']}}
+          </mat-error>
+        </mat-form-field>
 
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Email</mat-label>
-        <input type="text" formControlName="email" matInput />
-        <!-- reuired -->
-        <mat-error
-          *ngIf="f['email'].touched && f['email'].hasError('required')"
-        >
-          Email Rquired filed!
-        </mat-error>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Email</mat-label>
+          <input type="text" formControlName="email" matInput />
+          <!-- reuired -->
+          <mat-error
+            *ngIf="f['email'].touched && f['email'].hasError('required')"
+          >
+            Email Rquired filed!
+          </mat-error>
 
-        <!-- pattren -->
-        <mat-error *ngIf="f['email'].dirty && f['email'].hasError('pattern')">
-          please Enter valid Email
-        </mat-error>
-        <span *ngIf="f['email'].pending"> checking Avaliblity... </span>
-        <span class="text-success" *ngIf="f['email'].dirty && f['email'].valid">
-          This email iS Available</span
-        >
-        <mat-error
-          *ngIf="f['email'].dirty && f['email'].hasError('emailexist')"
-        >
-          {{f['email'].errors?.['emailexist']}}
-        </mat-error>
-      </mat-form-field>
+          <!-- pattren -->
+          <mat-error *ngIf="f['email'].dirty && f['email'].hasError('pattern')">
+            please Enter valid Email
+          </mat-error>
 
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Emp Id</mat-label>
-        <input type="text" matInput formControlName="empid" />
-        <!-- required -->
-        <mat-error
-          *ngIf="f['empid'].touched && f['empid'].hasError('required')"
+          <mat-error
+            *ngIf="f['email'].dirty && f['email'].hasError('emailexist')"
+          >
+            {{f['email'].errors?.['emailexist']}}
+          </mat-error>
+        </mat-form-field>
+        <p *ngIf="f['email'].pending">checking Avaliblity...</p>
+        <p class="text-success" *ngIf="f['email'].dirty && f['email'].valid">
+          This email iS Available
+        </p>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Emp Id</mat-label>
+          <input type="text" matInput formControlName="empid" />
+          <!-- required -->
+          <mat-error
+            *ngIf="f['empid'].touched && f['empid'].hasError('required')"
+          >
+            Emp Id required filed!
+          </mat-error>
+          <!-- pattern -->
+          <mat-error *ngIf="f['empid'].dirty && f['empid'].hasError('pattern')">
+            Plese Enter EmpId valid (ex:E123)!
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="w-100 m-2">
+      <mat-card-header>
+        <mat-card-title> Gender </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-radio-group
+          formControlName="gender"
+          aria-label="Gender"
+          appearance="fill"
         >
-          Emp Id required filed!
-        </mat-error>
-        <!-- pattern -->
-        <mat-error *ngIf="f['empid'].dirty && f['empid'].hasError('pattern')">
-          Plese Enter EmpId valid (ex:E123)!
-        </mat-error>
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+          <mat-radio-button [value]="gen" *ngFor="let gen of GenderArr">{{
+            gen
+          }}</mat-radio-button>
+        </mat-radio-group>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card class="w-100 m-2">
-    <mat-card-header>
-      <mat-card-title> Gender </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-radio-group
-        formControlName="gender"
-        aria-label="Gender"
-        appearance="fill"
-      >
-        <mat-radio-button [value]="gen" *ngFor="let gen of GenderArr">{{
-          gen
-        }}</mat-radio-button>
-      </mat-radio-group>
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="w-100 m-2">
+      <mat-card-header>
+        <mat-card-title> Adress Setting </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <section class="example-section">
+          <mat-checkbox formControlName="IsAddsame" class="example-margin"
+            >Is Current & Pernante Adress Same?</mat-checkbox
+          >
+        </section>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card class="w-100 m-2">
-    <mat-card-header>
-      <mat-card-title> Adress Setting </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <section class="example-section">
-        <mat-checkbox formControlName="IsAddsame" class="example-margin"
-          >Is Current & Pernante Adress Same?</mat-checkbox
-        >
-      </section>
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="w-100 m-2">
+      <mat-card-header>
+        <mat-card-title>Address Detail</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6" formGroupName="currentAdress">
+            <h3>Current Address</h3>
+            <!-- country -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Country</mat-label>
+              <mat-select formControlName="country">
+                <mat-option
+                  [value]="contry.Country"
+                  *ngFor="let contry of countryArr"
+                  >{{ contry.Country }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="f['currentAdress'].get('country')?.hasError('required')"
+              >
+                Country select reuired!
+              </mat-error>
+            </mat-form-field>
+            <!-- state -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>State</mat-label>
+              <input formControlName="state" type="text" matInput />
+              <mat-error
+                *ngIf="f['currentAdress'].get('state')?.hasError('required')"
+              >
+                state is Required!
+              </mat-error>
+            </mat-form-field>
+            <!-- city -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>City</mat-label>
+              <input formControlName="city" type="text" matInput />
+              <mat-error
+                *ngIf="f['currentAdress'].get('city')?.hasError('required')"
+              >
+                City is Required!
+              </mat-error>
+            </mat-form-field>
+            <!-- zipcode -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Zip Code</mat-label>
+              <input formControlName="zipcode" type="number" matInput />
+              <mat-error
+                *ngIf="f['currentAdress'].get('zipcode')?.hasError('required')"
+              >
+                Zip Code Is Required!
+              </mat-error>
 
-  <mat-card class="w-100 m-2">
-    <mat-card-header>
-      <mat-card-title>Address Detail</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="row">
-        <div class="col-md-6" formGroupName="currentAdress">
-          <h3>Current Address</h3>
-          <!-- country -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Country</mat-label>
-            <mat-select formControlName="country">
-              <mat-option
-                [value]="contry.Country"
-                *ngFor="let contry of countryArr"
-                >{{ contry.Country }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <!-- state -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>State</mat-label>
-            <input formControlName="state" type="text" matInput />
-          </mat-form-field>
-          <!-- city -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>City</mat-label>
-            <input formControlName="city" type="text" matInput />
-          </mat-form-field>
-          <!-- zipcode -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Zip Code</mat-label>
-            <input formControlName="zipcode" type="text" matInput />
-          </mat-form-field>
+              <mat-error
+                *ngIf="
+                  f['currentAdress'].get('zipcode')?.dirty &&
+                  f['currentAdress'].get('zipcode')?.hasError('pattern')
+                "
+              >
+                zipcode is valid pattern (eg:123456)
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6" formGroupName="peramanttAdress">
+            <h3>Peramenant Address</h3>
+            <!-- country -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Country</mat-label>
+              <mat-select formControlName="country">
+                <mat-option
+                  [value]="contry.Country"
+                  *ngFor="let contry of countryArr"
+                  >{{ contry.Country }}
+                </mat-option>
+              </mat-select>
+              <mat-error
+                *ngIf="
+                  f['peramanttAdress'].get('country')?.hasError('required')
+                "
+              >
+                country select reuired!
+              </mat-error>
+            </mat-form-field>
+            <!-- state -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>State</mat-label>
+              <input formControlName="state" type="text" matInput />
+              <mat-error
+                *ngIf="f['peramanttAdress'].get('state')?.hasError('required')"
+              >
+                state reuired field!
+              </mat-error>
+            </mat-form-field>
+            <!-- city -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>City</mat-label>
+              <input formControlName="city" type="text" matInput />
+              <mat-error
+                *ngIf="f['peramanttAdress'].get('city')?.hasError('required')"
+              >
+                city reuired field!
+              </mat-error>
+            </mat-form-field>
+            <!-- zipcode -->
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-label>Zip Code</mat-label>
+              <input formControlName="zipcode" type="number" matInput />
+              <mat-error
+                *ngIf="
+                  f['peramanttAdress'].get('zipcode')?.hasError('required')
+                "
+              >
+                zipcode reuired field!
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  f['peramanttAdress'].get('zipcode')?.dirty &&
+                  f['peramanttAdress'].get('zipcode')?.hasError('pattern')
+                "
+              >
+                zipcode is valid pattern (eg:123456)
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col-md-6" formGroupName="peramanttAdress">
-          <h3>Peramenant Address</h3>
-          <!-- country -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Country</mat-label>
-            <mat-select formControlName="country">
-              <mat-option
-                [value]="contry.Country"
-                *ngFor="let contry of countryArr"
-                >{{ contry.Country }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <!-- state -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>State</mat-label>
-            <input formControlName="state" type="text" matInput />
-          </mat-form-field>
-          <!-- city -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>City</mat-label>
-            <input formControlName="city" type="text" matInput />
-          </mat-form-field>
-          <!-- zipcode -->
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Zip Code</mat-label>
-            <input formControlName="zipcode" type="text" matInput />
-          </mat-form-field>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card class="w-100 m-2">
-    <mat-card-header>
-      <mat-card-title> Skills </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field class="example-chip-list w-100" appearance="fill">
-        <mat-label>Favorite Fruits</mat-label>
-        <mat-chip-list #chipList aria-label="Fruit selection">
-          <mat-chip *ngFor="let skills of skillsArr.controls; let i = index">
-            {{ skills.value }}
-            <button matChipRemove>
-              <mat-icon (click)="onskillremovr(i)">cancel</mat-icon>
-            </button>
-          </mat-chip>
-          <input
-            placeholder="New skills..."
-            [matChipInputFor]="chipList"
-            [formControl]="skillcontrol"
-            (matChipInputTokenEnd)="addskills()"
-          />
-        </mat-chip-list>
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="w-100 m-2">
+      <mat-card-header>
+        <mat-card-title> Skills </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field class="example-chip-list w-100" appearance="fill">
+          <mat-label>Favorite Fruits</mat-label>
+          <mat-chip-list #chipList aria-label="Fruit selection">
+            <mat-chip *ngFor="let skills of skillsArr.controls; let i = index">
+              {{ skills.value }}
+              <button matChipRemove>
+                <mat-icon (click)="onskillremovr(i)">cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input
+              placeholder="New skills..."
+              [matChipInputFor]="chipList"
+              [formControl]="skillcontrol"
+              (matChipInputTokenEnd)="addskills()"
+            />
+          </mat-chip-list>
+          <mat-error
+            *ngIf="f['skills'].touched && f['skills'].hasError('required')"
+          >
+            At least one skill is required!
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
 
-  <mat-card class="w-100 m-2">
-    <mat-card-header>
-      <mat-card-title>Add Dependant Detail</mat-card-title>
-    </mat-card-header>
-    <mat-card-content formArrayName="dependant">
-      <div
-        class="row"
-        [formGroupName]="i"
-        *ngFor="let depent of dependantArr.controls; let i = index"
-      >
-        <div class="col-md-11 d-flex">
-          <div class="col-md-3">
+    <!-- <mat-card class="w-100 m-2" >
+  <mat-card-header>
+    <mat-card-title>Add Dependant Detail</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content formArrayName="dependant">
+    <div
+      class="row mb-3"
+      [formGroupName]="i"
+      *ngFor="let depent of dependantArr.controls; let i = index"
+    >
+      <div class="col-12 col-md-11">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-3 mb-2">
             <mat-form-field appearance="fill" class="w-100">
               <mat-label>Full Name</mat-label>
               <input formControlName="fullname" type="text" matInput />
+              <mat-error *ngIf="depent.get('fullname')?.touched && depent.get('fullname')?.hasError('required')">
+                Full Name is required
+              </mat-error>
             </mat-form-field>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-12 col-sm-6 col-md-3 mb-2">
             <mat-form-field appearance="fill" class="w-100">
-              <mat-label>RelationShip</mat-label>
-              <input formControlName="realationship" type="text" matInput />
+              <mat-label>Relationship</mat-label>
+              <input formControlName="relationship" type="text" matInput />
+              <mat-error *ngIf="depent.get('relationship')?.touched && depent.get('relationship')?.hasError('required')">
+                Relationship is required
+              </mat-error>
             </mat-form-field>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-12 col-sm-6 col-md-3 mb-2">
             <mat-form-field appearance="fill" class="w-100">
               <mat-label>Citizenship</mat-label>
               <input formControlName="citizenship" type="text" matInput />
+              <mat-error *ngIf="depent.get('citizenship')?.touched && depent.get('citizenship')?.hasError('required')">
+                Citizenship is required
+              </mat-error>
             </mat-form-field>
           </div>
-          <div class="col-md-3">
+
+          <div class="col-12 col-sm-6 col-md-3 mb-2">
             <mat-form-field appearance="fill" class="w-100">
-              <mat-label>Is Travle with You ?</mat-label>
-              <mat-select formControlName="istravalwithyou">
-                <mat-option value="yes"> Yes</mat-option>
+              <mat-label>Is Travel with You?</mat-label>
+              <mat-select formControlName="isTravelWithYou">
+                <mat-option value="yes">Yes</mat-option>
                 <mat-option value="no">No</mat-option>
               </mat-select>
+              <mat-error *ngIf="depent.get('isTravelWithYou')?.touched && depent.get('isTravelWithYou')?.hasError('required')">
+                Selection is required
+              </mat-error>
             </mat-form-field>
-          </div>
-        </div>
-        <div class="col-md-1">
-          <div class="col-md-3">
-            <button
-              mat-icon-button
-              *ngIf="i > 0"
-              color="warn"
-              (click)="onremovedependent(i)"
-              type="button"
-            >
-              <mat-icon>delete</mat-icon>
-            </button>
           </div>
         </div>
       </div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button
-        mat-raised-button
-        [disabled]="f['dependant'].invalid"
-        color="primary"
-        type="button"
-        (click)="onAdddependant()"
-      >
-        Add Dependant
-      </button>
-    </mat-card-actions>
-  </mat-card>
 
-  <mat-card class="w-100 m-2">
-    <mat-card-header>
-      <mat-card-title> Password Detail </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Password</mat-label>
-        <input type="text" formControlName="password" matInput />
-        <mat-error
-          *ngIf="f['password'].touched && f['password'].hasError('required')"
-          >Password must required !</mat-error
+      <div class="col-12 col-md-1 d-flex align-items-start justify-content-end mb-2">
+        <button
+          mat-icon-button
+          *ngIf="i > 0"
+          color="warn"
+          (click)="onremovedependent(i)"
+          type="button"
+          aria-label="Remove dependant"
         >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
 
-        <mat-error
-          *ngIf="f['password'].dirty && f['password'].hasError('pattern')"
+  <mat-card-actions class="d-flex justify-content-end">
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="onAdddependant()"
+      [disabled]="SignUpFrom.invalid"
+    >
+      Add Dependant
+    </button>
+  </mat-card-actions>
+</mat-card> -->
+
+ 
+    <mat-card class="w-100 m-2">
+      <mat-card-header>
+        <mat-card-title>Add Dependant Detail</mat-card-title>
+      </mat-card-header>
+      <mat-card-content formArrayName="dependant">
+
+        <div
+  class="row mb-3"
+  [formGroupName]="i"
+  *ngFor="let depent of dependantArr.controls; let i = index"
+>
+  <!-- Form Fields -->
+  <div class="col-11 col-sm-10">
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-3 mb-2">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Full Name</mat-label>
+          <input formControlName="fullname" type="text" matInput />
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3 mb-2">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>RelationShip</mat-label>
+          <input formControlName="realationship" type="text" matInput />
+        </mat-form-field>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3 mb-2">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Citizen</mat-label>
+          <input formControlName="citizenship" type="text" matInput />
+        </mat-form-field>
+      </div>
+
+      <div class="col-1 col-sm-6 col-md-3 mb-2">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Is Travle with You ?</mat-label>
+          <mat-select formControlName="istravalwithyou">
+            <mat-option value="yes">Yes</mat-option>
+            <mat-option value="no">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Button -->
+  <div class="col-12 col-sm-2 d-flex align-items-start justify-content-sm-end mt-2 mt-sm-0">
+    <button
+      mat-icon-button
+      *ngIf="i > 0"
+      color="warn"
+      (click)="onremovedependent(i)"
+      type="button"
+      aria-label="Remove dependant"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>
+
+        <!-- <div
+          class="row d-flex"
+          [formGroupName]="i"
+          *ngFor="let depent of dependantArr.controls; let i = index"
         >
-          please Enter valid Password
-        </mat-error>
-      </mat-form-field>
+          <div class=" col-sm-8 col-md-11 d-flex ">
 
-      <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Confirm Password</mat-label>
-        <input type="text" formControlName="confirmpassword" matInput />
+            <div class="  col-sm-6 col-md-3 mb-2">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Full Name</mat-label>
+                <input formControlName="fullname" type="text" matInput />
+              </mat-form-field>
+            </div>
 
-        <mat-error
-          *ngIf="
-            f['confirmpassword'].dirty &&
-            f['confirmpassword'].hasError('matchErr')
-          "
+            <div class="  col-sm-6 col-md-3 mb-2">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>RelationShip</mat-label>
+                <input formControlName="realationship" type="text" matInput />
+              </mat-form-field>
+            </div>
+
+            <div class="  col-sm-6 col-md-3 mb-2 ">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Citizen</mat-label>
+                <input formControlName="citizenship" type="text" matInput />
+              </mat-form-field>
+            </div>
+
+            <div class="  col-sm-6 col-md-3 mb-2">
+              <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Is Travle with You ?</mat-label>
+                <mat-select formControlName="istravalwithyou">
+                  <mat-option value="yes"> Yes</mat-option>
+                  <mat-option value="no">No</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class=" col-sm- col-md-1">
+            <div class="col-12 col-sm-6 col-md-3 mb-2">
+              <button
+                mat-icon-button
+                *ngIf="i > 0"
+                color="warn"
+                (click)="onremovedependent(i)"
+                type="button"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div> -->
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          [disabled]="f['dependant'].invalid"
+          color="primary"
+          type="button"
+          (click)="onAdddependant()"
         >
-          Counfirm Pass And Confirm password must match!
-        </mat-error>
-      </mat-form-field>
-    </mat-card-content>
-  </mat-card>
+          Add Dependant
+        </button>
+      </mat-card-actions>
+    </mat-card> 
 
-  <button mat-raised-button color="primary" class="btn btn-block ml-2">Submit</button>
-</form>
+    <mat-card class="w-100 m-2">
+      <mat-card-header>
+        <mat-card-title> Password Detail </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Password</mat-label>
+          <input type="text" formControlName="password" matInput />
+          <mat-error
+            *ngIf="f['password'].touched && f['password'].hasError('required')"
+            >Password must required !</mat-error
+          >
 
+          <mat-error
+            *ngIf="f['password'].dirty && f['password'].hasError('pattern')"
+          >
+            please Enter valid Password
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Confirm Password</mat-label>
+          <input type="text" formControlName="confirmpassword" matInput />
+
+          <mat-error
+            *ngIf="
+              f['confirmpassword'].dirty &&
+              f['confirmpassword'].hasError('matchErr')
+            "
+          >
+            Counfirm Pass And Confirm password must match!
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+
+    <button mat-raised-button color="primary" class="btn btn-block ml-2">
+      Submit
+    </button>
+  </form>
 </div>
